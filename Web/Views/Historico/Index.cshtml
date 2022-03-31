@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewData["Title"] = "Históricos";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Histórico</h4>
+        <br />
+
+        <form class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Tipo de Pessoa</label>
+                        <div class="input-group">
+                            <select class="form-control">
+                                <option value="">Selecione</option>
+                                <option value="F">Física</option>
+                                <option value="J">Jurídica</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Número</label>
+                        <div class="input-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o Número">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Classificação</label>
+                        <select class="form-control">
+                            <option value="">Selecione</option>
+                            <option value="H">H</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Data da Análise</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">De</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">até</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Segmento</label>
+                        <select class="form-control">
+                            <option value="">Selecione</option>
+                            <option value="SegE1">SegE1</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Movito</label>
+                        <select class="form-control">
+                            <option value="">Selecione</option>
+                            <option value="Comissão Superior de Crédito">Comissão Superior de Crédito</option>
+                            <option value="Comissão de Crédito">Comissão de Crédito</option>
+                            <option value="Comitê de Monitoramento de Crédito">Comitê de Monitoramento de Crédito</option>
+                            <option value="Superintendência de Crédito">Superintendência de Crédito</option>
+                            <option value="Superintendência de Monitoramento de Crédito">Superintendência de Monitoramento de Crédito</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <br />
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-sm">
+                <tr>
+                    <th>Tipo de Pessoa</th>
+                    <th>Número</th>
+                    <th>Segmento</th>
+                    <th>Classificação</th>
+                    <th>Data da Análise</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Física</td>
+                    <td>151.235.047-88</td>
+                    <td>SegE1</td>
+                    <td>H</td>
+                    <td>06/06/2022</td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <button class="btn btn-info btn-sm">Ver</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Física</td>
+                    <td>151.235.047-88</td>
+                    <td>SegE1</td>
+                    <td>H</td>
+                    <td>06/06/2022</td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <button class="btn btn-info btn-sm">Ver</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Física</td>
+                    <td>151.235.047-88</td>
+                    <td>SegE1</td>
+                    <td>H</td>
+                    <td>06/06/2022</td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <button class="btn btn-info btn-sm">Ver</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Física</td>
+                    <td>151.235.047-88</td>
+                    <td>SegE1</td>
+                    <td>H</td>
+                    <td>06/06/2022</td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <button class="btn btn-info btn-sm">Ver</button>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="float-right">
+            <button class="btn btn-sm btn-success">Exportar como Excell</button>
+            <button class="btn btn-sm btn-danger">Exportar como PDF</button>
+        </div>
+    </div>
+</div>
+

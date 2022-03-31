@@ -433,3 +433,4 @@ C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAn
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Web.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Web.pdb
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Web.genruntimeconfig.cache
+C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Historico\Index.cshtml.g.cs
