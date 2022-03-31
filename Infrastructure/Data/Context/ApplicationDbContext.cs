@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Web.Data
+namespace Infrastructure.Data.Context
 {
     public class ApplicationDbContext : IdentityDbContext
     {
