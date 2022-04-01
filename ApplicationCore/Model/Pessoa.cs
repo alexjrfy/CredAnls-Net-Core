@@ -5,10 +5,9 @@ using System.Text;
 
 namespace ApplicationCore.Model
 {
-    public class Pessoa
+    public class Pessoa : Entity
     {
-        [Key]
-        public int Numero { get; set; }
+        public int NumeroDocumento { get; set; }
         public DateTime DataCadastro { get; set; }
         public bool BloqueadoAnalise { get; set; }
         public Segmento Segmento { get; set; }
