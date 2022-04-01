@@ -81,7 +81,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\alexj\\OneDrive\\Área de Trabalho\\Projeto aplicado\\Prototipação\\CredAnls\\ApplicationCore\\ApplicationCore.csproj": {
+                "projectPath": "C:\\Users\\alexj\\OneDrive\\Área de Trabalho\\Projeto aplicado\\Prototipação\\CredAnls\\ApplicationCore\\ApplicationCore.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
