@@ -6,10 +6,9 @@ using System.Text;
 
 namespace ApplicationCore.Model
 {
-    public class ExternalEntity
+    public class ExternalEntity: Entity
     {
-        [Key]
-        public Guid Id { get; set; }
+        
         public int IdExterno { get; set; }
         public bool Bloqueado { get; set; }
     }

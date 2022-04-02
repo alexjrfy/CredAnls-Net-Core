@@ -5814,7 +5814,8 @@
       "ApplicationCore >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.23",
       "Microsoft.EntityFrameworkCore >= 3.1.23",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.23"
+      "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.23",
+      "System.Collections >= 4.3.0"
     ]
   },
   "packageFolders": {
@@ -5871,6 +5872,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[3.1.23, )"
+          },
+          "System.Collections": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [

@@ -1,5 +1,8 @@
-﻿@{
+﻿@model Web.ViewModels.HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
+    var mes = DateTime.Now.ToString("MMMM");
+    mes = char.ToUpper(mes.First()) + mes.Substring(1).ToLower();
 }
 
 <div class="row">
@@ -36,15 +39,20 @@
                 <p class="text-center">
                     <b>Análises realizadas hoje:</b>
                     <br />
-                    10
+                    @Model.QuantidateAnalisesHoje
                     <br />
-                    <b>Análises realizadas no mês (@(DateTime.Now.Month)):</b>
+                    <b>Análises realizadas no mês (@(mes)):</b>
                     <br />
-                    10
+                    @Model.QuantidateAnalisesMes
                     <br />
-                    <b>Motivo mais Utilizado:</b>
+                    <b>Motivo mais Utilizado hoje:</b>
                     <br />
-                    Comissão Superior de Crédito (3)
+                    @(Model.QuantidadeMotivosHoje==0?"-":Model.NomeMotivosHoje + " ("+Model.QuantidadeMotivosHoje+")")
+                    <br />
+                    <b>Motivo mais Utilizado no mês (@(mes)):</b>
+                    <br />
+                    @(Model.QuantidadeMotivosMes==0?"-":Model.NomeMotivosMes + " ("+Model.QuantidadeMotivosMes+")")
+                    
                     
                 </p>
             </div>
@@ -95,55 +103,21 @@
                 <th>Data da Análise</th>
                 <th></th>
             </tr>
+            @foreach (var item in Model.Analises)
+            {
             <tr>
-                <td>Física</td>
-                <td>151.235.047-88</td>
-                <td>SegE1</td>
-                <td>H</td>
-                <td>06/06/2022</td>
+                <td>@item.Pessoa.TipoPessoa.Descricao</td>
+                <td>@item.Pessoa.NumeroDocumento</td>
+                <td>@item.Pessoa.Segmento.Descricao</td>
+                <td>@item.Classificacao.Descricao</td>
+                <td>@item.DataCadastro</td>
                 <td class="text-center">
                     <div class="btn-group">
                         <button class="btn btn-info btn-sm">Ver</button>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td>Física</td>
-                <td>151.235.047-88</td>
-                <td>SegE1</td>
-                <td>H</td>
-                <td>06/06/2022</td>
-                <td class="text-center">
-                    <div class="btn-group">
-                        <button class="btn btn-info btn-sm">Ver</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Física</td>
-                <td>151.235.047-88</td>
-                <td>SegE1</td>
-                <td>H</td>
-                <td>06/06/2022</td>
-                <td class="text-center">
-                    <div class="btn-group">
-                        <button class="btn btn-info btn-sm">Ver</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Física</td>
-                <td>151.235.047-88</td>
-                <td>SegE1</td>
-                <td>H</td>
-                <td>06/06/2022</td>
-                <td class="text-center">
-                    <div class="btn-group">
-                        <button class="btn btn-info btn-sm">Ver</button>
-                    </div>
-                </td>
-            </tr>
-
+            }
         </table>
         </div>
         <div class="float-right">

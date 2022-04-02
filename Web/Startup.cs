@@ -1,4 +1,6 @@
+using ApplicationCore.Interfaces;
 using Infrastructure.Data.Context;
+using Infrastructure.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,7 +35,10 @@ namespace Web
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
-            services.AddRazorPages().AddRazorRuntimeCompilation(); ;
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            services.AddScoped<IAnaliseRepository, AnaliseRepository>();
+            services.AddScoped<IMotivoRepository, MotivoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
