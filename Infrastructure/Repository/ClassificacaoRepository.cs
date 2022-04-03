@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Infrastructure.Repository
 {
-    public class MotivoRepository : Repository<Motivo>, IMotivoRepository
+    public class ClassificacaoRepository : Repository<Classificacao>, IClassificacaoRepository
     {
-        public MotivoRepository(ApplicationDbContext db) : base(db)
+        public ClassificacaoRepository(ApplicationDbContext db) : base(db)
         {
         }
     }

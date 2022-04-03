@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Model;
+﻿using ApplicationCore.AuxiliaryModel;
+using ApplicationCore.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,10 +11,9 @@ namespace ApplicationCore.Interfaces
     {
         Task<List<Analise>> GetHistricoAnaliseLimite(int limite);
         Task<int> GetQuantidadesAnalisesHoje();
-
         Task<int> GetQuantidadesAnalisesMes();
-
-        Task<dynamic> GetInfoAnaliseMotivo(string periodo);
-
+        Task<GroupCount> GetInfoAnaliseMotivo(string periodo);
+        Task<GroupCount> GetInfoAnaliseClassificacao(int posicao);
+        Task<Analise> GetAnalisePorNumeroDocumento(double numeroDocumento, string chave);
     }
 }

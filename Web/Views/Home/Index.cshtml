@@ -6,24 +6,34 @@
 }
 
 <div class="row">
-    <form class="col-md-4">
+    @if(TempData["Error"]!=null){
+    <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Alerta!</strong> @TempData["Error"]
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    </div>
+    }
+    <form asp-controller="Analise" asp-action="Buscar" class="col-md-4">
         <div class="card h-100">
             <div class="card-body">
                 <h4 class="text-center">Busca</h4><br />
                 <div class="form-group">
-                    @*<label for="exampleInputEmail1">Travar Data.</label>*@
+                    
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
-                            <input class="" type="radio" name="tppes" id="motivo" value="F">&nbsp;
+                            <input class="" type="radio" name="chave" id="chave" value="F">&nbsp;
                             <label class="form-check-label" for="inlineRadio1">CPF</label>
                         </span>
                         <span class="input-group-text">
-                            <input class="" type="radio" name="tppes" id="motivo" value="J">&nbsp;
+                            <input class="" type="radio" name="chave" id="chave" value="J">&nbsp;
                             <label class="form-check-label" for="inlineRadio1">CNPJ</label>
                         </span>
                       </div>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o Número">
+                      <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento" aria-describedby="Número do Documento" placeholder="Digite o Número do Documento">
                     </div>
                 </div>
                 <div class="form-group">
@@ -64,23 +74,29 @@
             <div class="card-body">
                 <h4 class="text-center">Ranking de Classificações</h4><br />
                     <div class="w-100">
-                        <h1 class="classificacaoTxt">
-                            H
-                        </h1>
-                        <div class="gold-rank w-100 text-center rounded">1º - 1343</div>
-                        <br />
+                        @if(Model.QuantidadeOuro>0){
+                            <h1 class="classificacaoTxt">
+                                @Model.ClassificacaoOuro
+                            </h1>
+                            <div class="gold-rank w-100 text-center rounded">1º - @Model.QuantidadeOuro</div>
+                            <br />
+                        }
                     </div>
                     <div class="w-50 float-left">
-                        <h5 class="text-center">
-                            A
-                        </h5>
-                        <div class="silver-rank w-100 text-center rounded-left">2º - 334</div>
+                        @if(Model.QuantidadePrata>0){
+                            <h5 class="text-center">
+                                @Model.ClassificacaoPrata
+                            </h5>
+                            <div class="silver-rank w-100 text-center rounded-left">2º - @Model.QuantidadePrata</div>
+                        }
                     </div>
                     <div class="w-50 float-right">
-                        <h5 class="text-center">
-                            B
-                        </h5>
-                        <div class="bronze-rank w-100 text-center rounded-right">3º - 64</div>
+                        @if(Model.QuantidadeBronze>0){
+                            <h5 class="text-center">
+                                @Model.ClassificacaoBronze
+                            </h5>
+                            <div class="bronze-rank w-100 text-center rounded-right">3º - @Model.QuantidadeBronze</div>
+                        }
                     </div>
             </div>
         </div>
@@ -121,7 +137,7 @@
         </table>
         </div>
         <div class="float-right">
-            <button class="btn btn-sm btn-success">Ver Histórico Completo</button>
+            <a asp-controller="Historico" asp-action="Index" class="btn btn-sm btn-success">Ver Histórico Completo</a>
         </div>
     </div>
 </div>

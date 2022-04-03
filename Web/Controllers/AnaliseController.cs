@@ -1,83 +1,41 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ApplicationCore.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
+using Web.ViewModels;
 
 namespace Web.Controllers
 {
     public class AnaliseController : Controller
     {
-        // GET: AnaliseController
-        public ActionResult Index()
+        private readonly ILogger<HomeController> _logger;
+        private readonly IAnaliseRepository _analiseRepository;
+        public AnaliseController(ILogger<HomeController> logger, IAnaliseRepository analiseRespository)
         {
-            return View();
+            _logger = logger;
+            _analiseRepository = analiseRespository;
         }
 
-        // GET: AnaliseController/Details/5
-        public ActionResult Details(int id)
+        [Route("analise-teste/{numeroDocumento}")]
+        public async Task<IActionResult> Index()
         {
+            
             return View();
-        }
 
-        // GET: AnaliseController/Create
-        public ActionResult Create()
-        {
-            return View();
         }
-
-        // POST: AnaliseController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Buscar(string numeroDocumento, string chave)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AnaliseController/Edit/5
-        public ActionResult Edit(int id)
-        {
+            // verificar se o CPF esta na base primeiro
+            //Se existir, prossegue para a analise
+            //Senão busca no externo
             return View();
         }
 
-        // POST: AnaliseController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: AnaliseController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: AnaliseController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

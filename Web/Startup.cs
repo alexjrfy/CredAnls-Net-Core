@@ -39,6 +39,7 @@ namespace Web
 
             services.AddScoped<IAnaliseRepository, AnaliseRepository>();
             services.AddScoped<IMotivoRepository, MotivoRepository>();
+            services.AddScoped<IClassificacaoRepository, ClassificacaoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
