@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Interfaces;
+﻿using ApplicationCore.AuxiliaryModel;
+using ApplicationCore.Interfaces;
 using ApplicationCore.Model;
 using Infrastructure.Data.Context;
 using Microsoft.EntityFrameworkCore;
@@ -35,45 +36,25 @@ namespace Infrastructure.Repository
         {
             return await Db.Analise.CountAsync(x => x.DataCadastro.Month == DateTime.Today.Month && x.DataCadastro.Year == DateTime.Today.Year);
         }
-
-        public async Task<int> GetQuantidadeMotivosHoje()
-        {
-            var quantidade = await GetMaxMotivo("hoje");
-            return quantidade.Count;
-        }
-
-        public async Task<Guid> GetMotivoIdHoje()
-        {
-            var guid = await GetMaxMotivo("hoje");
-            return  guid.Group;
-        }
-
-        public async Task<int> GetQuantidadeMotivosMes()
-        {
-            var quantidade = await GetMaxMotivo("mes");
-            return quantidade.Count;
-        }
-
-        public async Task<Guid> GetMotivoIdMes()
-        {
-            var guid = await GetMaxMotivo("mes");
-            return guid.Group;
-        }
-
-        public async Task<dynamic> GetMaxMotivo(string tipo)
+        public async Task<GroupCount> GetMaxMotivo(string tipo)
         {
             var max = tipo == "hoje"
                 ? Db.Analise.Where(x => x.DataCadastro == DateTime.Today).Select(x => x.Motivo.Id)
                 : Db.Analise.Where(x => x.DataCadastro.Month == DateTime.Today.Month && x.DataCadastro.Year == DateTime.Today.Year).Select(x => x.Motivo.Id);
 
-            dynamic result = new { Group = Guid.Empty, Count = 0 };
+            dynamic result = new GroupCount();
             if (max.Count() > 0)
             {
-                result = await max.GroupBy(type => type).Select(x => new { Group = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).FirstAsync();
+                result = await max.GroupBy(type => type).Select(x => new GroupCount{ Id = x.Key, Quantidade = x.Count() }).OrderByDescending(x => x.Quantidade).FirstAsync();
                 
             }
             return result;
         }
 
+        public async Task<dynamic> GetInfoAnaliseMotivo(string periodo)
+        {
+            var retorno = await GetMaxMotivo(periodo);
+            return retorno;
+        }
     }
 }

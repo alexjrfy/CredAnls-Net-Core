@@ -26,29 +26,27 @@ namespace Web.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            var analise                 = await _analiseRepository.GetHistricoAnaliseLimite(10);
+            var analise         = await _analiseRepository.GetHistricoAnaliseLimite(10);
             
-            var quantidadeHoje          = await _analiseRepository.GetQuantidadesAnalisesHoje();
-            var quantidadeMes           = await _analiseRepository.GetQuantidadesAnalisesMes();
+            var quantidadeHoje  = await _analiseRepository.GetQuantidadesAnalisesHoje();
+            var quantidadeMes   = await _analiseRepository.GetQuantidadesAnalisesMes();
             
-            var quantidadeMotivoHoje    = await _analiseRepository.GetQuantidadeMotivosHoje();
-            var IdMotivoHoje            = await _analiseRepository.GetMotivoIdHoje();
+            var motivoHoje      = await _analiseRepository.GetInfoAnaliseMotivo("hoje");
+            var motivoMes       = await _analiseRepository.GetInfoAnaliseMotivo("mes");
 
-            var quantidadeMotivoMes     = await _analiseRepository.GetQuantidadeMotivosMes();
-            var IdMotivoMes             = await _analiseRepository.GetMotivoIdMes();
-
+            var aaa = motivoHoje.Id ;
 
             var nomeMotivoHoje = "";
-            if (IdMotivoHoje != Guid.Empty)
+            if (motivoHoje.Id != Guid.Empty)
             {
-                var nomeMotivoHojeBusca = await _motivoRepository.ObterPorId(IdMotivoHoje);
+                var nomeMotivoHojeBusca = await _motivoRepository.ObterPorId(motivoHoje.Id);
                 nomeMotivoHoje = nomeMotivoHojeBusca.Descricao;
             }
 
             var nomeMotivoMes = "";
-            if (IdMotivoMes != Guid.Empty)
+            if (motivoMes.Id != Guid.Empty)
             {
-                var nomeMotivoMesBusca = await _motivoRepository.ObterPorId(IdMotivoMes);
+                var nomeMotivoMesBusca = await _motivoRepository.ObterPorId(motivoMes.Id);
                 nomeMotivoMes = nomeMotivoMesBusca.Descricao;
             }
 
@@ -57,9 +55,9 @@ namespace Web.Controllers
                 Analises                = analise,
                 QuantidateAnalisesHoje  = quantidadeHoje,
                 QuantidateAnalisesMes   = quantidadeMes,
-                QuantidadeMotivosHoje   = quantidadeMotivoHoje,
+                QuantidadeMotivosHoje   = motivoHoje.Quantidade,
                 NomeMotivosHoje         = nomeMotivoHoje,
-                QuantidadeMotivosMes    = quantidadeMotivoMes,
+                QuantidadeMotivosMes    = motivoMes.Quantidade,
                 NomeMotivosMes          = nomeMotivoMes,
 
             };

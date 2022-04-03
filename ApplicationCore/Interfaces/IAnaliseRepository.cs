@@ -13,10 +13,7 @@ namespace ApplicationCore.Interfaces
 
         Task<int> GetQuantidadesAnalisesMes();
 
-        Task<int> GetQuantidadeMotivosHoje();
-        Task<Guid> GetMotivoIdHoje();
-        Task<int> GetQuantidadeMotivosMes();
-        Task<Guid> GetMotivoIdMes();
-        
+        Task<dynamic> GetInfoAnaliseMotivo(string periodo);
+
     }
 }
