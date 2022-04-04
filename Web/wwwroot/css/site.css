@@ -101,3 +101,9 @@ body {
     background: saddlebrown;
     color: #ffffff;
 }
+
+.semClassificacao{
+    font-size: 20px;
+    vertical-align: middle;
+    font-style: italic;
+}

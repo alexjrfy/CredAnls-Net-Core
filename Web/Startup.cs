@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace Web
 {
@@ -40,6 +41,9 @@ namespace Web
             services.AddScoped<IAnaliseRepository, AnaliseRepository>();
             services.AddScoped<IMotivoRepository, MotivoRepository>();
             services.AddScoped<IClassificacaoRepository, ClassificacaoRepository>();
+            services.AddScoped<IPessoaRepository, PessoaRepository>();
+
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

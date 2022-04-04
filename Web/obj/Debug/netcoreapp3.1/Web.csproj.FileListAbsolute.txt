@@ -1,5 +1,6 @@
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\libman.json
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\Web.StaticWebAssets.xml
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\Web.exe
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\Web.deps.json
@@ -205,7 +206,6 @@ C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAn
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\refs\System.Resources.Reader.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\refs\System.Resources.ResourceManager.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\refs\System.Resources.Writer.dll
-C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\refs\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\refs\System.Runtime.CompilerServices.VisualC.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\refs\System.Runtime.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\refs\System.Runtime.Extensions.dll
@@ -271,6 +271,8 @@ C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAn
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\refs\WindowsBase.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\Web.Views.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\Web.Views.pdb
+C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
@@ -336,6 +338,7 @@ C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAn
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
@@ -417,7 +420,7 @@ C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAn
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Web.TagHelpers.output.cache
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Web.RazorCoreGenerate.cache
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
-C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Analise\Index.cshtml.g.cs
+C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Analise\Details.cshtml.g.cs
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Historico\Index.cshtml.g.cs
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs

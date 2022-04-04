@@ -7,7 +7,7 @@ namespace ApplicationCore.Model
 {
     public class Pessoa : Entity
     {
-        public int NumeroDocumento { get; set; }
+        public double NumeroDocumento { get; set; }
         public DateTime DataCadastro { get; set; }
         public bool BloqueadoAnalise { get; set; }
         public Segmento Segmento { get; set; }

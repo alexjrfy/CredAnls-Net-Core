@@ -76,5 +76,26 @@ namespace Infrastructure.Repository
                 .Include(c => c.Motivo).Where(c => c.Pessoa.NumeroDocumento == numeroDocumento && c.Pessoa.TipoPessoa.Chave==chave)
                 .FirstOrDefaultAsync();
         }
+        public async Task<List<Analise>> GetHistricoAnalisePessoaLimite(Guid id, int limite)
+        {
+            return await Db.Analise.Take(limite).AsNoTracking()
+                .Include(c => c.Classificacao)
+                .Include(c => c.Pessoa).ThenInclude(c => c.TipoPessoa)
+                .Include(c => c.Pessoa).ThenInclude(c => c.Segmento)
+                .Include(c => c.Motivo)
+                .Where(x => x.Pessoa.Id == id)
+                .ToListAsync();
+        }
+
+        public async Task<Analise> GetAnaliseRecente(Guid id)
+        {
+            return await Db.Analise.AsNoTracking()
+                .Include(c => c.Classificacao)
+                .Include(c => c.Pessoa).ThenInclude(c => c.TipoPessoa)
+                .Include(c => c.Pessoa).ThenInclude(c => c.Segmento)
+                .Include(c => c.Motivo)
+                .Where(x => x.Pessoa.Id == id).OrderByDescending(x => x.DataCadastro)
+                .FirstOrDefaultAsync();
+        }
     }
 }

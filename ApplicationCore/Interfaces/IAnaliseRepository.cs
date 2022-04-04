@@ -10,6 +10,8 @@ namespace ApplicationCore.Interfaces
     public interface IAnaliseRepository : IRepository<Analise>
     {
         Task<List<Analise>> GetHistricoAnaliseLimite(int limite);
+        Task<List<Analise>> GetHistricoAnalisePessoaLimite(Guid id, int limite);
+        Task<Analise> GetAnaliseRecente(Guid id);
         Task<int> GetQuantidadesAnalisesHoje();
         Task<int> GetQuantidadesAnalisesMes();
         Task<GroupCount> GetInfoAnaliseMotivo(string periodo);

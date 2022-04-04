@@ -16,6 +16,17 @@
         </div>
     </div>
     }
+
+    @if(TempData["Success"]!=null){
+    <div class="col-md-12">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Alerta!</strong> @TempData["Success"]
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    </div>
+    }
     <form asp-controller="Analise" asp-action="Buscar" class="col-md-4">
         <div class="card h-100">
             <div class="card-body">
@@ -25,15 +36,15 @@
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text">
-                            <input class="" type="radio" name="chave" id="chave" value="F">&nbsp;
+                            <input class="" type="radio" name="chave" id="chave" required value="F">&nbsp;
                             <label class="form-check-label" for="inlineRadio1">CPF</label>
                         </span>
                         <span class="input-group-text">
-                            <input class="" type="radio" name="chave" id="chave" value="J">&nbsp;
+                            <input class="" type="radio" name="chave" id="chave" required value="J">&nbsp;
                             <label class="form-check-label" for="inlineRadio1">CNPJ</label>
                         </span>
                       </div>
-                      <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento" aria-describedby="Número do Documento" placeholder="Digite o Número do Documento">
+                      <input type="text" class="form-control" id="numeroDocumento" required name="numeroDocumento" aria-describedby="Número do Documento" placeholder="Digite o Número do Documento">
                     </div>
                 </div>
                 <div class="form-group">
