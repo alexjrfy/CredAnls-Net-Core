@@ -8,6 +8,7 @@ namespace ApplicationCore.Model
 {
     public class Analise : Entity
     {
+        [Column(TypeName = "VARCHAR(max)")]
         [MaxLength]
         public String Parecer { get; set; }
         public DateTime DataCadastro { get; set; }

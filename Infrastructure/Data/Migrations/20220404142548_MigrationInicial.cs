@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Data.Migrations
 {
-    public partial class projetoInicial : Migration
+    public partial class MigrationInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,10 +11,10 @@ namespace Infrastructure.Data.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "varchar(100)", nullable: false),
-                    Name = table.Column<string>(type: "varchar(100)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "varchar(100)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "varchar(100)", nullable: true)
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -25,16 +25,16 @@ namespace Infrastructure.Data.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "varchar(100)", nullable: false),
-                    UserName = table.Column<string>(type: "varchar(100)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "varchar(100)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "varchar(100)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "varchar(100)", maxLength: 256, nullable: true),
+                    Id = table.Column<string>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
+                    Email = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
-                    PasswordHash = table.Column<string>(type: "varchar(100)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "varchar(100)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "varchar(100)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "varchar(100)", nullable: true),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    SecurityStamp = table.Column<string>(nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
@@ -53,7 +53,7 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     IdExterno = table.Column<int>(nullable: false),
                     Bloqueado = table.Column<bool>(nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(100)", nullable: true)
+                    Descricao = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -67,7 +67,7 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     IdExterno = table.Column<int>(nullable: false),
                     Bloqueado = table.Column<bool>(nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(100)", nullable: true)
+                    Descricao = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -81,7 +81,7 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     IdExterno = table.Column<int>(nullable: false),
                     Bloqueado = table.Column<bool>(nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(100)", nullable: true)
+                    Descricao = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -95,7 +95,7 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     IdExterno = table.Column<int>(nullable: false),
                     Bloqueado = table.Column<bool>(nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(100)", nullable: true)
+                    Descricao = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -109,8 +109,8 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     IdExterno = table.Column<int>(nullable: false),
                     Bloqueado = table.Column<bool>(nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(100)", nullable: true),
-                    Chave = table.Column<string>(type: "varchar(100)", nullable: true)
+                    Descricao = table.Column<string>(nullable: true),
+                    Chave = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -123,9 +123,9 @@ namespace Infrastructure.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(type: "varchar(100)", nullable: false),
-                    ClaimType = table.Column<string>(type: "varchar(100)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "varchar(100)", nullable: true)
+                    RoleId = table.Column<string>(nullable: false),
+                    ClaimType = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -144,9 +144,9 @@ namespace Infrastructure.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "varchar(100)", nullable: false),
-                    ClaimType = table.Column<string>(type: "varchar(100)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "varchar(100)", nullable: true)
+                    UserId = table.Column<string>(nullable: false),
+                    ClaimType = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -163,10 +163,10 @@ namespace Infrastructure.Data.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "varchar(100)", maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(type: "varchar(100)", maxLength: 128, nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "varchar(100)", nullable: true),
-                    UserId = table.Column<string>(type: "varchar(100)", nullable: false)
+                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
+                    ProviderDisplayName = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -183,8 +183,8 @@ namespace Infrastructure.Data.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "varchar(100)", nullable: false),
-                    RoleId = table.Column<string>(type: "varchar(100)", nullable: false)
+                    UserId = table.Column<string>(nullable: false),
+                    RoleId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -207,10 +207,10 @@ namespace Infrastructure.Data.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "varchar(100)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "varchar(100)", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "varchar(100)", maxLength: 128, nullable: false),
-                    Value = table.Column<string>(type: "varchar(100)", nullable: true)
+                    UserId = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
+                    Name = table.Column<string>(maxLength: 128, nullable: false),
+                    Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -263,7 +263,7 @@ namespace Infrastructure.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Parecer = table.Column<string>(type: "varchar(max)", nullable: true),
+                    Parecer = table.Column<string>(type: "VARCHAR(max)", nullable: true),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     DataExpiracao = table.Column<DateTime>(nullable: true),
                     PessoaId = table.Column<Guid>(nullable: false),
