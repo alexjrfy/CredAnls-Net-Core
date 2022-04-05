@@ -60,6 +60,8 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(AnaliseViewModel analiseViewModel)
         {
+            if (!ModelState.IsValid) return RedirectToAction("Details", "Analise", new { tipoPessoa=analiseViewModel.Pessoa.TipoPessoa.Chave, numeroDocumento = analiseViewModel.Pessoa.NumeroDocumento,  });
+
             await _analiseRepository.Adicionar(_mapper.Map<Analise>(analiseViewModel.Analise));
             
             TempData["Success"] = "Análise de realizada com sucesso!";

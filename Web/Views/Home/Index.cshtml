@@ -109,6 +109,16 @@
                             <div class="bronze-rank w-100 text-center rounded-right">3º - @Model.QuantidadeBronze</div>
                         }
                     </div>
+
+                    @if(Model.QuantidadeBronze==0 && Model.QuantidadePrata==0 && Model.QuantidadeOuro==0){
+                        <div class="w-100">    
+                            <h1 class="classificacaoTxt">
+                                <i class="semClassificacao">Sem Classificação</i>
+                            </h1>
+                        <br />
+                        
+                    </div>
+                    }
             </div>
         </div>
     </div>
@@ -120,36 +130,43 @@
     <div class="col-md-12">
         <h4>Últimas análises</h4>
         <br />
-        <div class="table-responsive">
-        <table class="table table-bordered table-striped table-sm">
-            <tr>
-                <th>Tipo de Pessoa</th>
-                <th>Número</th>
-                <th>Segmento</th>
-                <th>Classificação</th>
-                <th>Data da Análise</th>
-                <th></th>
-            </tr>
-            @foreach (var item in Model.Analises)
-            {
-            <tr>
-                <td>@item.Pessoa.TipoPessoa.Descricao</td>
-                <td>@item.Pessoa.NumeroDocumento</td>
-                <td>@item.Pessoa.Segmento.Descricao</td>
-                <td>@item.Classificacao.Descricao</td>
-                <td>@item.DataCadastro</td>
-                <td class="text-center">
-                    <div class="btn-group">
-                        <button class="btn btn-info btn-sm">Ver</button>
-                    </div>
-                </td>
-            </tr>
-            }
-        </table>
-        </div>
-        <div class="float-right">
-            <a asp-controller="Historico" asp-action="Index" class="btn btn-sm btn-success">Ver Histórico Completo</a>
-        </div>
+        @if (Model.Analises.Count > 0)
+        {   
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-sm">
+                    <tr>
+                        <th>Tipo de Pessoa</th>
+                        <th>Número</th>
+                        <th>Segmento</th>
+                        <th>Classificação</th>
+                        <th>Data da Análise</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.Analises)
+                    {
+                    <tr>
+                        <td>@item.Pessoa.TipoPessoa.Descricao</td>
+                        <td>@item.Pessoa.NumeroDocumento</td>
+                        <td>@item.Pessoa.Segmento.Descricao</td>
+                        <td>@item.Classificacao.Descricao</td>
+                        <td>@item.DataCadastro</td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <button class="btn btn-info btn-sm">Ver</button>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </table>
+            </div>
+            <div class="float-right">
+                <a asp-controller="Historico" asp-action="Index" class="btn btn-sm btn-success">Ver Histórico Completo</a>
+            </div>
+        }
+        else
+        {
+            <i>Sem análises realizadas.</i>
+        }
     </div>
 </div>
 

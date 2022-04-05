@@ -8,9 +8,5 @@ namespace ApplicationCore.Model
     {
         public String Descricao { get; set; }
 
-        public static implicit operator string(Motivo v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

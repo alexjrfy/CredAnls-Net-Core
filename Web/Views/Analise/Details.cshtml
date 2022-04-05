@@ -115,6 +115,8 @@
 
 <form asp-controller="Analise" asp-action="Create" enctype="multipart/form-data" class="row abas aba-form active" >
     <input type="hidden" asp-for="Analise.PessoaId" value="@Model.Pessoa.Id" />
+    <input type="hidden" asp-for="@Model.Pessoa.NumeroDocumento" value="@Model.Pessoa.NumeroDocumento" />
+    <input type="hidden" asp-for="@Model.Pessoa.TipoPessoa.Chave" value="@Model.Pessoa.TipoPessoa.Chave" />
     <div class="col-md-12">
         <h4>Nova Análise</h4>        
     </div>
@@ -126,10 +128,11 @@
                 @foreach (var item in @Model.Motivos)
                 {
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" asp-for="Analise.MotivoId" required value="@item.Id" />
+                        <input class="form-check-input" type="radio" asp-for="Analise.MotivoId" value="@item.Id" />
                         <label class="form-check-label" asp-for="Analise.MotivoId" >@item.Descricao</label>
                     </div>   
                 }
+                <span asp-validation-for="Analise.MotivoId" class="text-danger"></span>
             </div>
         </div>
     </div>
@@ -140,9 +143,10 @@
                 <br />
                 <div class="form-group">
                     <label asp-for="Analise.ClassificacaoId">Classificação</label>
-                    <select asp-for="Analise.ClassificacaoId" asp-items="@(new SelectList(Model.Classificacoes, "Id", "Descricao"))" class="form-control"  required >
+                    <select asp-for="Analise.ClassificacaoId" asp-items="@(new SelectList(Model.Classificacoes, "Id", "Descricao"))" class="form-control" >
                         <option value="">Selecione</option>
                     </select>
+                    <span asp-validation-for="Analise.ClassificacaoId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Analise.DataExpiracao">Travar Data</label>
@@ -161,7 +165,8 @@
                 <h4 class="text-center">Parecer</h4>
                 <div class="form-group">
                     <label asp-for="Analise.Parecer">Descritivo do Parecer:</label>
-                    <textarea asp-for="Analise.Parecer" class="form-control ckeditor"></textarea>
+                    <textarea asp-for="Analise.Parecer" class="form-control ckeditor-validate" ></textarea>
+                    <span asp-validation-for="Analise.Parecer" class="text-danger"></span>
                 </div>
             </div>
         </div>
@@ -276,6 +281,14 @@
         </div>
     </div>
 }
+<style>
+    .ckeditor-validate{
+        display: block !important;
+        width: 0px !important;
+        height: 0px !important;
+        padding: 0;
+    }
+</style>
 @section scripts {
 <script>
 $('.AnaliseAbas a').on('click', function (e) {
@@ -311,6 +324,15 @@ $(document).ready(function(){
     //        cancelLabel: 'Clear'
     //    }
     //});
+    
+    CKEDITOR.replace('Analise_Parecer', {
+        on: {
+              change: function() {
+                  this.updateElement();    
+              }
+        }
+    });
 });
 </script>
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
