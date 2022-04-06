@@ -6,27 +6,7 @@
 }
 
 <div class="row">
-    @if(TempData["Error"]!=null){
-    <div class="col-md-12">
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Alerta!</strong> @TempData["Error"]
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-    </div>
-    }
-
-    @if(TempData["Success"]!=null){
-    <div class="col-md-12">
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Alerta!</strong> @TempData["Success"]
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-    </div>
-    }
+    @{await Html.RenderPartialAsync("_Alerts");}
     <form asp-controller="Analise" asp-action="Buscar" class="col-md-4">
         <div class="card h-100">
             <div class="card-body">
@@ -152,7 +132,7 @@
                         <td>@item.DataCadastro</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <button class="btn btn-info btn-sm">Ver</button>
+                                <a asp-controller="Analise" asp-action="Details" asp-route-guid="@item.Id" class="btn btn-info btn-sm">Ver</a>
                             </div>
                         </td>
                     </tr>

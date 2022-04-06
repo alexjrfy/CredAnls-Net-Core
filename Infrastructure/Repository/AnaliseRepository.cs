@@ -24,6 +24,7 @@ namespace Infrastructure.Repository
                 .Include(c => c.Pessoa).ThenInclude(c => c.TipoPessoa)
                 .Include(c => c.Pessoa).ThenInclude(c => c.Segmento)
                 .Include(c => c.Motivo)
+                .OrderByDescending(c => c.DataCadastro)
                 .ToListAsync();
         }
 
@@ -95,6 +96,16 @@ namespace Infrastructure.Repository
                 .Include(c => c.Pessoa).ThenInclude(c => c.Segmento)
                 .Include(c => c.Motivo)
                 .Where(x => x.Pessoa.Id == id).OrderByDescending(x => x.DataCadastro)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<Analise> GetAnaliseId(Guid id)
+        {
+            return await Db.Analise.AsNoTracking().Where(c => c.Id == id)
+                .Include(c => c.Classificacao)
+                .Include(c => c.Pessoa).ThenInclude(c => c.TipoPessoa)
+                .Include(c => c.Pessoa).ThenInclude(c => c.Segmento)
+                .Include(c => c.Motivo)
                 .FirstOrDefaultAsync();
         }
     }

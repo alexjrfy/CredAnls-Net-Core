@@ -17,5 +17,6 @@ namespace ApplicationCore.Interfaces
         Task<GroupCount> GetInfoAnaliseMotivo(string periodo);
         Task<GroupCount> GetInfoAnaliseClassificacao(int posicao);
         Task<Analise> GetAnalisePorNumeroDocumento(double numeroDocumento, string chave);
+        Task<Analise> GetAnaliseId(Guid id);
     }
 }

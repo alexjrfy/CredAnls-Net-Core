@@ -420,10 +420,12 @@ C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAn
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Web.TagHelpers.output.cache
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Web.RazorCoreGenerate.cache
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Analise\Create.cshtml.g.cs
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Analise\Details.cshtml.g.cs
-C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Historico\Index.cshtml.g.cs
+C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Analise\Historico.cshtml.g.cs
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Alerts.cshtml.g.cs
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\alexj\OneDrive\Área de Trabalho\Projeto aplicado\Prototipação\CredAnls\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs

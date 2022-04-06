@@ -30,7 +30,7 @@ namespace Web.Controllers
         }
 
         [Route("Analise/{tipoPessoa}/{numeroDocumento}")]
-        public async Task<IActionResult> Details(string tipoPessoa, double numeroDocumento)
+        public async Task<IActionResult> Create(string tipoPessoa, double numeroDocumento)
         {
             var típo            = tipoPessoa == "CPF" ? "F" : "J";
 
@@ -39,7 +39,7 @@ namespace Web.Controllers
             var analiseRecente  = await _analiseRepository.GetAnaliseRecente(pessoa.Id);
 
             var motivos         = await _motivoRepository.ObterTodos();
-            var classificacoes  = await _classificacaoRepository.ObterTodos();
+            var classificacoes  = await _classificacaoRepository.GetClassificacoes();
 
             var pessoasGrupo    = await _pessoaRepository.GetDadosPessoasGrupo(pessoa.Grupo.Id);
 
@@ -56,12 +56,16 @@ namespace Web.Controllers
             return View(analiseViewModel);
         }
 
-        //[Route("Analise/{tipoPessoa}/{numeroDocumento}")]
+        [Route("Analise/{tipoPessoa}/{numeroDocumento}")]
         [HttpPost]
         public async Task<IActionResult> Create(AnaliseViewModel analiseViewModel)
         {
-            if (!ModelState.IsValid) return RedirectToAction("Details", "Analise", new { tipoPessoa=analiseViewModel.Pessoa.TipoPessoa.Chave, numeroDocumento = analiseViewModel.Pessoa.NumeroDocumento,  });
-
+            if (!ModelState.IsValid)
+            {
+                TempData["Error"] = "Erro ao salvar a análise.";
+                return RedirectToAction("Create", "Analise", new { tipoPessoa = analiseViewModel.Pessoa.TipoPessoa.Chave, numeroDocumento = analiseViewModel.Pessoa.NumeroDocumento, });
+            }
+            
             await _analiseRepository.Adicionar(_mapper.Map<Analise>(analiseViewModel.Analise));
             
             TempData["Success"] = "Análise de realizada com sucesso!";
@@ -72,9 +76,6 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Buscar(string numeroDocumento, string chave)
         {
-            // verificar se o CPF esta na base primeiro
-            //Se existir, prossegue para a analise
-            //Senão busca no externo
             var pessoa = await _pessoaRepository.ChecarPessoa(double.Parse(numeroDocumento), chave);
 
             if (pessoa == null)
@@ -84,10 +85,25 @@ namespace Web.Controllers
             }
             var url = pessoa.TipoPessoa.Chave=="F"?"CPF":"CNPJ";
             
-            return RedirectToAction("Details", "Analise", new { tipoPessoa = url, numeroDocumento = pessoa.NumeroDocumento }); ;
+            return RedirectToAction("Create", "Analise", new { tipoPessoa = url, numeroDocumento = pessoa.NumeroDocumento }); ;
         }
+        
+        [Route("Analise/Detalhes/{guid}")]
+        public async Task<IActionResult> Details(Guid guid)
+        {
+            var analise = await _analiseRepository.GetAnaliseId(guid);
+            if (analise == null)
+            {
+                TempData["Error"] = "Registro não encontrado";
+                return RedirectToAction("Index", "Home");
+            }
 
+            var analiseDetailsViewModel = new AnaliseDetailsViewModel
+            {
+                Analise = analise,
+            };
 
-
+            return View(analiseDetailsViewModel);
+        }
     }
 }

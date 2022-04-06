@@ -15,7 +15,7 @@ namespace Web.ViewModels
         public List<Grupo> Grupos { get; set; } 
         public List<Pessoa> PessoasGrupo { get; set; }
 
-        //Var
+        //Variables
         public Motivo Motivo { get; set; }
         public Classificacao Classificacao { get; set; }
         public DateTime DataExpiracao { get; set; }
