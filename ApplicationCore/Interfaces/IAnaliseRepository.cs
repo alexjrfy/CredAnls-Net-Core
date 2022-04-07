@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace ApplicationCore.Interfaces
 {
@@ -18,5 +19,7 @@ namespace ApplicationCore.Interfaces
         Task<GroupCount> GetInfoAnaliseClassificacao(int posicao);
         Task<Analise> GetAnalisePorNumeroDocumento(double numeroDocumento, string chave);
         Task<Analise> GetAnaliseId(Guid id);
+        Task<IPagedList<Analise>> GetTodasAnalises(int itensPorPagina, int numeroPagina, string tipoPessoaFiltro, double? numeroDocumento, Guid? classificacao, DateTime? dataInicio, DateTime? dataFim, Guid? segmento, Guid? motivo);
+        
     }
 }

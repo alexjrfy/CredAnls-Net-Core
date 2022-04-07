@@ -18,23 +18,28 @@ namespace Web.Controllers
         private readonly IPessoaRepository _pessoaRepository;
         private readonly IMotivoRepository _motivoRepository;
         private readonly IClassificacaoRepository _classificacaoRepository;
+        private readonly ISegmentoRepository _segmentoRepository;
+        private readonly ITipoPessoaRepository _tipoPessoaRepository;
+
         private readonly IMapper _mapper;
-        public AnaliseController(ILogger<HomeController> logger, IAnaliseRepository analiseRespository, IMapper mapper, IPessoaRepository pessoaRepository, IMotivoRepository motivoRepository, IClassificacaoRepository classificacaoRepository)
+        public AnaliseController(ILogger<HomeController> logger, IAnaliseRepository analiseRespository, IMapper mapper, IPessoaRepository pessoaRepository, IMotivoRepository motivoRepository, IClassificacaoRepository classificacaoRepository, ISegmentoRepository segmentoRepository, ITipoPessoaRepository tipoPessoaRepository)
         {
             _logger = logger;
             _analiseRepository = analiseRespository;
             _pessoaRepository = pessoaRepository;
             _motivoRepository = motivoRepository;
             _classificacaoRepository = classificacaoRepository;
+            _segmentoRepository = segmentoRepository;
+            _tipoPessoaRepository = tipoPessoaRepository;
             _mapper = mapper;   
         }
 
         [Route("Analise/{tipoPessoa}/{numeroDocumento}")]
         public async Task<IActionResult> Create(string tipoPessoa, double numeroDocumento)
         {
-            var típo            = tipoPessoa == "CPF" ? "F" : "J";
+            var tipo            = tipoPessoa == "CPF" ? "F" : "J";
 
-            var pessoa          = await _pessoaRepository.GetDadosPessoa(numeroDocumento, típo);
+            var pessoa          = await _pessoaRepository.GetDadosPessoa(numeroDocumento, tipo);
             var analises        = await _analiseRepository.GetHistricoAnalisePessoaLimite(pessoa.Id, 5);
             var analiseRecente  = await _analiseRepository.GetAnaliseRecente(pessoa.Id);
 
@@ -104,6 +109,30 @@ namespace Web.Controllers
             };
 
             return View(analiseDetailsViewModel);
+        }
+
+        [Route("Analise/Historico")]
+        public async Task<IActionResult> Historico(int? page, string tipoPessoaFiltro, double? numeroDocumento, Guid classificacao, DateTime? dataInicio, DateTime? dataFim, Guid segmento, Guid motivo)
+        {
+            const int itensPorPagina = 10;
+            int numeroPagina = (page ?? 1);
+            
+            var lista = await _analiseRepository.GetTodasAnalises(itensPorPagina, numeroPagina, tipoPessoaFiltro, numeroDocumento, classificacao, dataInicio, dataFim, segmento, motivo);
+            var motivos = await _motivoRepository.ObterTodos();
+            var classificacoes = await _classificacaoRepository.GetClassificacoes();
+            var segmentos = await _segmentoRepository.ObterTodos();
+            var tipoPessoa = await _tipoPessoaRepository.ObterTodos();
+
+            var analiseHistoricoViewModel = new AnaliseHistoricoViewModel
+            {
+                Analises = lista,
+                Motivos = motivos,
+                Classificacao = classificacoes,
+                Segmentos = segmentos,
+                TipoPessoa = tipoPessoa
+            };
+
+            return View(analiseHistoricoViewModel);
         }
     }
 }

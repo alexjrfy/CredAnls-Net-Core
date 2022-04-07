@@ -1,6 +1,17 @@
-﻿
+﻿@using ApplicationCore.Model
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@model Web.ViewModels.AnaliseHistoricoViewModel;
 @{
-    ViewData["Title"] = "Históricos";
+    ViewData["Title"]       = "Histórico de Análises";
+
+    var tipoPessoaFiltro    = Context.Request.Query["tipoPessoaFiltro"];
+    var classificacao       = Context.Request.Query["classificacao"];
+    var segmento            = Context.Request.Query["segmento"];
+    var motivo              = Context.Request.Query["motivo"];
+    var dataInicio          = Context.Request.Query["dataInicio"];
+    var dataFim             = Context.Request.Query["dataFim"];
 }
 
 <div class="row">
@@ -11,130 +22,184 @@
         <form class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <label for="exampleInputEmail1">Tipo de Pessoa</label>
                         <div class="input-group">
-                            <select class="form-control">
+                            <select class="form-control" name="tipoPessoaFiltro" id="tipoPessoaFiltro">
                                 <option value="">Selecione</option>
-                                <option value="F">Física</option>
-                                <option value="J">Jurídica</option>
+                                @foreach (var item in Model.TipoPessoa)
+                                {
+                                    <!option value="@item.Chave"
+                                        @if(item.Chave==tipoPessoaFiltro){
+                                            @:selected
+                                        }
+                                    >
+                                        @item.Descricao
+                                    </!option>
+                                }
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Número</label>
+                    <div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">Número do Documento</label>
                         <div class="input-group">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite o Número">
+                            <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="Digite o Número do Documento" value="@(Context.Request.Query["numeroDocumento"])">
                         </div>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <label for="exampleInputEmail1">Classificação</label>
-                        <select class="form-control">
+                        <select class="form-control" name="classificacao" id="classificacao">
                             <option value="">Selecione</option>
-                            <option value="H">H</option>
+                            @foreach (var item in Model.Classificacao)
+                            {
+                                <!option value="@item.Id"
+                                    @if(item.Id.ToString().Equals(classificacao)){
+                                            @:selected
+                                        }
+                                >
+                                        @item.Descricao
+                                </!option>   
+                            }
+                            
                         </select>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">Segmento</label>
+                        <select class="form-control" id="segmento" name="segmento">
+                            <option value="">Selecione</option>
+                            @foreach (var item in Model.Segmentos)
+                            {
+                                <!option value="@item.Id"
+                                     @if(item.Id.ToString().Equals(segmento)){
+                                            @:selected
+                                        }
+                                >
+                                        @item.Descricao
+                                </!option>   
+                            }
+                            
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">Movito</label>
+                        <select class="form-control" name="motivo" id="motivo">
+                            <option value="">Selecione</option>
+                            @foreach (var item in Model.Motivos)
+                            {
+                                <!option value="@item.Id"
+                                    @if(item.Id.ToString().Equals(motivo)){
+                                            @:selected
+                                        }
+                                >
+                                        @item.Descricao
+                                </!option>  
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
                         <label for="exampleInputEmail1">Data da Análise</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">De</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input type="date" class="form-control" name="dataInicio" id="dataInicio" value="@(Context.Request.Query["dataInicio"])">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">até</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input type="date" class="form-control" name="dataFim" id="dataFim" value="@(Context.Request.Query["dataFim"])">
                         </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Segmento</label>
-                        <select class="form-control">
-                            <option value="">Selecione</option>
-                            <option value="SegE1">SegE1</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Movito</label>
-                        <select class="form-control">
-                            <option value="">Selecione</option>
-                            <option value="Comissão Superior de Crédito">Comissão Superior de Crédito</option>
-                            <option value="Comissão de Crédito">Comissão de Crédito</option>
-                            <option value="Comitê de Monitoramento de Crédito">Comitê de Monitoramento de Crédito</option>
-                            <option value="Superintendência de Crédito">Superintendência de Crédito</option>
-                            <option value="Superintendência de Monitoramento de Crédito">Superintendência de Monitoramento de Crédito</option>
-                        </select>
-                    </div>
+                    
+                    
+                </div>
+                <div class="float-right">
+                    <a asp-action="Historico" asp-controller="Analise" class="btn btn-sm btn-info">
+                        <i class="fa fa-undo"></i> Limpar
+                    </a>
+                    <button class="btn btn-sm btn-success"><i class="fa fa-search"></i> Buscar</button>
                 </div>
             </div>
         </form>
 
-        <br />
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped table-sm">
-                <tr>
-                    <th>Tipo de Pessoa</th>
-                    <th>Número</th>
-                    <th>Segmento</th>
-                    <th>Classificação</th>
-                    <th>Data da Análise</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td>Física</td>
-                    <td>151.235.047-88</td>
-                    <td>SegE1</td>
-                    <td>H</td>
-                    <td>06/06/2022</td>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            <button class="btn btn-info btn-sm">Ver</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Física</td>
-                    <td>151.235.047-88</td>
-                    <td>SegE1</td>
-                    <td>H</td>
-                    <td>06/06/2022</td>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            <button class="btn btn-info btn-sm">Ver</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Física</td>
-                    <td>151.235.047-88</td>
-                    <td>SegE1</td>
-                    <td>H</td>
-                    <td>06/06/2022</td>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            <button class="btn btn-info btn-sm">Ver</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Física</td>
-                    <td>151.235.047-88</td>
-                    <td>SegE1</td>
-                    <td>H</td>
-                    <td>06/06/2022</td>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            <button class="btn btn-info btn-sm">Ver</button>
-                        </div>
-                    </td>
-                </tr>
+        @if(Model.Analises.Count>0){
+            <br />
+            <div class="float-right mb-4">
+                <button class="btn btn-sm btn-success"><i class="fa fa-file-excel-o"></i> Exportar como Excel</button>
+                <button class="btn btn-sm btn-danger"><i class="fa fa-file-pdf-o"></i> Exportar como PDF</button>
+            </div>
+        
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-sm">
+                    <tr>
+                        <th>Tipo de Pessoa</th>
+                        <th>Número do Documento</th>
+                        <th>Segmento</th>
+                        <th>Classificação</th>
+                        <th>Data da Análise</th>
+                        <th></th>
+                    </tr>
+                    @foreach(var item in Model.Analises)
+                    {
+                    <tr>
+                        <td>@item.Pessoa.TipoPessoa.Descricao</td>
+                        <td>@item.Pessoa.NumeroDocumento</td>
+                        <td>@item.Pessoa.Segmento.Descricao</td>
+                        <td>@item.Classificacao.Descricao</td>
+                        <td>@item.DataCadastro</td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a asp-controller="Analise" asp-action="Details" asp-route-guid="@item.Id" class="btn btn-info btn-sm"><i class="fa fa-search"></i> Ver</a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </table>
+            </div>
+            <div class="float-left">
+                <div>
+                    <div style="float: right">
+                        Página @(Model.Analises.PageCount < Model.Analises.PageNumber ? 0 : Model.Analises.PageNumber) de @Model.Analises.PageCount
+                    </div>
+                    <div class="justify-content-center">
+                        @*@Html.PagedListPager(Model, pagina => Url.Action("Historico", new { search = ViewBag.Busca, pagina }), new PagedListRenderOptions { FunctionToTransformEachPageLink = (liTag, aTag) => { aTag.Attributes.Add("class", "page-link".ToString()); return aTag; }, LiElementClasses = new[] { "page-item" }, UlElementClasses = new[] { "pagination  justify-content-center" } })*@
+                    </div>
+                </div>
+            </div>
 
-            </table>
-        </div>
-        <div class="float-right">
-            <button class="btn btn-sm btn-success">Exportar como Excell</button>
-            <button class="btn btn-sm btn-danger">Exportar como PDF</button>
-        </div>
+            <div class="float-right">
+                @Html.PagedListPager(
+                    Model.Analises,
+                    page => Url.Action("Historico", new { page, tipoPessoaFiltro = tipoPessoaFiltro, motivo = motivo, segmento = segmento, classificacao = classificacao, dataInicio = dataInicio, dataFim = dataFim  }),
+                    new PagedListRenderOptions {
+                        ContainerDivClasses = new[] { "navigation" },
+                        PageClasses = new[] { "page-link" },
+                        LiElementClasses = new[] { "page-item" },
+                        UlElementClasses = new[] { "pagination justify-content-center" },
+                        LinkToPreviousPageFormat = "Anterior",
+                        LinkToNextPageFormat = "Próximo",
+                        LinkToFirstPageFormat = "Primeira",
+                        LinkToLastPageFormat = "Última",
+                        ActiveLiElementClass = "active",
+                        MaximumPageNumbersToDisplay = 3,
+                        DisplayEllipsesWhenNotShowingAllPageNumbers = false
+                    }
+                )
+            </div>
+        }
+        else
+        {
+            <br /><br />
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-sm">
+                    <tr>
+                        <td><i>A Pesquisa não retornou resultados.</i></td>
+                    </tr>
+                </table>
+            </div>
+        }
+
+
     </div>
 </div>
 

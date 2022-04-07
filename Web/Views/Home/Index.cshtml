@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-success btn-block">Buscar</button>
+                    <button class="btn btn-success btn-block"><i class="fa fa-search"></i> Buscar</button>
                 </div>
             </div>
         </div>
@@ -132,7 +132,7 @@
                         <td>@item.DataCadastro</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a asp-controller="Analise" asp-action="Details" asp-route-guid="@item.Id" class="btn btn-info btn-sm">Ver</a>
+                                <a asp-controller="Analise" asp-action="Details" asp-route-guid="@item.Id" class="btn btn-info btn-sm"><i class="fa fa-search"></i> Ver</a>
                             </div>
                         </td>
                     </tr>
@@ -140,7 +140,7 @@
                 </table>
             </div>
             <div class="float-right">
-                <a asp-controller="Historico" asp-action="Index" class="btn btn-sm btn-success">Ver Histórico Completo</a>
+                <a asp-controller="Analise" asp-action="Historico" class="btn btn-sm btn-success"><i class="fa fa-newspaper"></i> Ver Histórico Completo</a>
             </div>
         }
         else

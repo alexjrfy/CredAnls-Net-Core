@@ -42,6 +42,10 @@ namespace Web
             services.AddScoped<IMotivoRepository, MotivoRepository>();
             services.AddScoped<IClassificacaoRepository, ClassificacaoRepository>();
             services.AddScoped<IPessoaRepository, PessoaRepository>();
+            services.AddScoped<IGrupoRepository, GrupoRepository>();
+            services.AddScoped<ITipoPessoaRepository, TipoPessoaRepository>();
+            services.AddScoped<ISegmentoRepository, SegmentoRepository>();
+
 
             services.AddAutoMapper(typeof(Startup));
         }

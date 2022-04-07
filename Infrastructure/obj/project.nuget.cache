@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "sQCcZjKTsJ9j+Z7yuxKrFHV8tIP+tHzJpMqnjyBsiPb/vh0Q/YhSPIHZ0w7POyrPQs5NUx2Z4iGTrUkU/d2R/w==",
+  "dgSpecHash": "w2ZOqWrH5XVHKoRHxL/nNU8Tz1R7F6UhgzooWhJROO4s97abuLY6p2XoYooMgamBlfxSByltC6NdeOkL0Rd1EQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\alexj\\OneDrive\\Área de Trabalho\\Projeto aplicado\\Prototipação\\CredAnls\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\alexj\\.nuget\\packages\\jetbrains.annotations\\2021.1.0\\jetbrains.annotations.2021.1.0.nupkg.sha512",
     "C:\\Users\\alexj\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.23\\microsoft.aspnetcore.cryptography.internal.3.1.23.nupkg.sha512",
     "C:\\Users\\alexj\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.23\\microsoft.aspnetcore.cryptography.keyderivation.3.1.23.nupkg.sha512",
     "C:\\Users\\alexj\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.23\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.23.nupkg.sha512",
@@ -106,7 +107,9 @@
     "C:\\Users\\alexj\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\alexj\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\alexj\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\alexj\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\alexj\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\alexj\\.nuget\\packages\\x.pagedlist\\8.1.0\\x.pagedlist.8.1.0.nupkg.sha512",
+    "C:\\Users\\alexj\\.nuget\\packages\\x.pagedlist.mvc.core\\8.1.0\\x.pagedlist.mvc.core.8.1.0.nupkg.sha512"
   ],
   "logs": []
 }
