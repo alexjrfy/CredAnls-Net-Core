@@ -191,25 +191,28 @@
                         <th>Número</th>
                         <th>Segmento</th>
                     </tr>
-
-                    @foreach (var item in Model.PessoasGrupo)
+                    @for (var i = 0; i < Model.PessoasGrupo.Count; i++)
                     {
                         <tr>
                             <td>
-                                <input type="checkbox" 
-                                    
-                                    @(item.Id==Model.Pessoa.Id ? "checked":"") 
-                                    @if(item.Id==Model.Pessoa.Id){
-                                         @:onclick="return false;"
-                                         @:class="checkGrupo checkGrupoMarcado"
+                                @{
+                                  var checkedOuNao = Model.PessoasGrupo[i].Id==Model.Pessoa.Id ? "checked":null;
+                                  var onClickCheck = "";
+                                  var classCheck   = "";
+
+                                  @if(Model.PessoasGrupo[i].Id==Model.Pessoa.Id){
+                                         onClickCheck   = "return false;";
+                                         classCheck     = "checkGrupo checkGrupoMarcado";
                                     }else{
-                                        @:class="checkGrupo checkGrupoOutro"
+                                        classCheck     = "checkGrupo checkGrupoOutro";
                                     }
-                                 />
+                                }
+                                <input type="checkbox" asp-for="@Model.CheckedPessoas[@i].IsChecked" onclick="@onClickCheck" checked="@checkedOuNao" class="@classCheck"  />
+                                <input type="hidden" asp-for="@Model.CheckedPessoas[@i].Id" value="@Model.PessoasGrupo[i].Id"  />
                             </td>
-                            <td>@item.TipoPessoa.Descricao</td>
-                            <td>@item.NumeroDocumento</td>
-                            <td>@item.Segmento.Descricao</td>
+                            <td>@Model.PessoasGrupo[i].TipoPessoa.Descricao</td>
+                            <td>@Model.PessoasGrupo[i].NumeroDocumento</td>
+                            <td>@Model.PessoasGrupo[i].Segmento.Descricao</td>
                         </tr>
                     }
                     
@@ -314,9 +317,9 @@ function marcarDesmarcar(){
         //$('.checkGrupo').each(function(){
         //    $(this).attr("checked", "checked");
         //});
-        $('.checkGrupoOutro').attr("checked", "checked");
+        $('.checkGrupoOutro').prop("checked", true);
     }else{
-        $(".checkGrupoOutro").removeAttr("checked");
+        $(".checkGrupoOutro").prop("checked", false);
     }
 }
 

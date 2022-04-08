@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Model;
+﻿using ApplicationCore.AuxiliaryModel;
+using ApplicationCore.Model;
 using System;
 using System.Collections.Generic;
 
@@ -21,5 +22,7 @@ namespace Web.ViewModels
         public DateTime DataExpiracao { get; set; }
         public string Parecer { get; set; }
         public Analise Analise { get; set; }
+
+        public List<CheckedList> CheckedPessoas { get; set; }
     }
 }

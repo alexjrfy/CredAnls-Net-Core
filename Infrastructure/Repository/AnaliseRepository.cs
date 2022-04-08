@@ -109,7 +109,7 @@ namespace Infrastructure.Repository
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<IPagedList<Analise>> GetTodasAnalises(int itensPorPagina, int numeroPagina, string tipoPessoaFiltro, double? numeroDocumento, Guid? classificacao, DateTime? dataInicio, DateTime? dataFim, Guid? segmento, Guid? motivo)
+        public async Task<IPagedList<Analise>> GetTodasAnalisesPaginacao(int itensPorPagina, int numeroPagina, string tipoPessoaFiltro, double? numeroDocumento, Guid? classificacao, DateTime? dataInicio, DateTime? dataFim, Guid? segmento, Guid? motivo)
         {
             var lista = Db.Analise.Include(c => c.Classificacao)
             .Include(c => c.Pessoa).ThenInclude(c => c.TipoPessoa)
@@ -150,6 +150,49 @@ namespace Infrastructure.Repository
 
 
             return await lista.ToPagedListAsync(numeroPagina, itensPorPagina);
+        }
+
+        public async Task<List<Analise>> GetTodasAnalises(string tipoPessoaFiltro, double? numeroDocumento, Guid? classificacao, DateTime? dataInicio, DateTime? dataFim, Guid? segmento, Guid? motivo)
+        {
+            var lista = Db.Analise.Include(c => c.Classificacao)
+            .Include(c => c.Pessoa).ThenInclude(c => c.TipoPessoa)
+            .Include(c => c.Pessoa).ThenInclude(c => c.Segmento)
+            .Include(c => c.Motivo).OrderByDescending(c => c.DataCadastro).AsNoTracking();
+
+            if (!String.IsNullOrEmpty(tipoPessoaFiltro))
+            {
+                lista = lista.Where(x => x.Pessoa.TipoPessoa.Chave.Contains(tipoPessoaFiltro));
+            }
+
+            if (numeroDocumento != null)
+            {
+                lista = lista.Where(x => x.Pessoa.NumeroDocumento == numeroDocumento);
+            }
+
+            if (classificacao != Guid.Empty)
+            {
+                lista = lista.Where(x => x.Classificacao.Id == classificacao);
+            }
+
+            if (segmento != Guid.Empty)
+            {
+                lista = lista.Where(x => x.Pessoa.Segmento.Id == segmento);
+            }
+            if (motivo != Guid.Empty)
+            {
+                lista = lista.Where(x => x.Motivo.Id == motivo);
+            }
+            if (dataInicio != null)
+            {
+                lista = lista.Where(x => x.DataCadastro.Date >= dataInicio);
+            }
+            if (dataFim != null)
+            {
+                lista = lista.Where(x => x.DataCadastro.Date <= dataFim);
+            }
+
+
+            return await lista.ToListAsync();
         }
     }
 }

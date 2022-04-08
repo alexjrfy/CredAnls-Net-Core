@@ -19,7 +19,8 @@ namespace ApplicationCore.Interfaces
         Task<GroupCount> GetInfoAnaliseClassificacao(int posicao);
         Task<Analise> GetAnalisePorNumeroDocumento(double numeroDocumento, string chave);
         Task<Analise> GetAnaliseId(Guid id);
-        Task<IPagedList<Analise>> GetTodasAnalises(int itensPorPagina, int numeroPagina, string tipoPessoaFiltro, double? numeroDocumento, Guid? classificacao, DateTime? dataInicio, DateTime? dataFim, Guid? segmento, Guid? motivo);
-        
+        Task<IPagedList<Analise>> GetTodasAnalisesPaginacao(int itensPorPagina, int numeroPagina, string tipoPessoaFiltro, double? numeroDocumento, Guid? classificacao, DateTime? dataInicio, DateTime? dataFim, Guid? segmento, Guid? motivo);
+        Task<List<Analise>> GetTodasAnalises(string tipoPessoaFiltro, double? numeroDocumento, Guid? classificacao, DateTime? dataInicio, DateTime? dataFim, Guid? segmento, Guid? motivo);
+
     }
 }

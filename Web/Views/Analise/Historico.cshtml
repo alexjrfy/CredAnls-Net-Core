@@ -12,6 +12,7 @@
     var motivo              = Context.Request.Query["motivo"];
     var dataInicio          = Context.Request.Query["dataInicio"];
     var dataFim             = Context.Request.Query["dataFim"];
+    var numeroDocumento     = Context.Request.Query["numeroDocumento"];
 }
 
 <div class="row">
@@ -43,7 +44,7 @@
                     <div class="form-group col-md-3">
                         <label for="exampleInputEmail1">Número do Documento</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="Digite o Número do Documento" value="@(Context.Request.Query["numeroDocumento"])">
+                            <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento" placeholder="Digite o Número do Documento" value="@(numeroDocumento)">
                         </div>
                     </div>
                     <div class="form-group col-md-3">
@@ -125,7 +126,17 @@
         @if(Model.Analises.Count>0){
             <br />
             <div class="float-right mb-4">
-                <button class="btn btn-sm btn-success"><i class="fa fa-file-excel-o"></i> Exportar como Excel</button>
+                <a 
+                    asp-action="ExportarExcel" 
+                    asp-route-tipoPessoaFiltro="@tipoPessoaFiltro"
+                    asp-route-numeroDocumento="@numeroDocumento"
+                    asp-route-classificacao="@classificacao"
+                    asp-route-segmento="@segmento"
+                    asp-route-motivo="@motivo"
+                    asp-route-dataInicio="@dataInicio"
+                    asp-route-dataFim="@dataFim"
+
+                    class="btn btn-sm btn-success"><i class="fa fa-file-excel-o"></i> Exportar como Excel</a>
                 <button class="btn btn-sm btn-danger"><i class="fa fa-file-pdf-o"></i> Exportar como PDF</button>
             </div>
         

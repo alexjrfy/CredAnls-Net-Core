@@ -70,8 +70,20 @@ namespace Web.Controllers
                 TempData["Error"] = "Erro ao salvar a análise.";
                 return RedirectToAction("Create", "Analise", new { tipoPessoa = analiseViewModel.Pessoa.TipoPessoa.Chave, numeroDocumento = analiseViewModel.Pessoa.NumeroDocumento, });
             }
-            
+
             await _analiseRepository.Adicionar(_mapper.Map<Analise>(analiseViewModel.Analise));
+
+            foreach ( var item in analiseViewModel.CheckedPessoas)
+            {
+                if (item.Id != analiseViewModel.Analise.PessoaId && item.IsChecked == true)
+                {
+                    analiseViewModel.Analise.Id = new Guid();
+                    analiseViewModel.Analise.PessoaId = item.Id;
+                    await _analiseRepository.Adicionar(_mapper.Map<Analise>(analiseViewModel.Analise));
+                }
+                
+            }
+            
             
             TempData["Success"] = "Análise de realizada com sucesso!";
 
@@ -117,7 +129,7 @@ namespace Web.Controllers
             const int itensPorPagina = 10;
             int numeroPagina = (page ?? 1);
             
-            var lista = await _analiseRepository.GetTodasAnalises(itensPorPagina, numeroPagina, tipoPessoaFiltro, numeroDocumento, classificacao, dataInicio, dataFim, segmento, motivo);
+            var lista = await _analiseRepository.GetTodasAnalisesPaginacao(itensPorPagina, numeroPagina, tipoPessoaFiltro, numeroDocumento, classificacao, dataInicio, dataFim, segmento, motivo);
             var motivos = await _motivoRepository.ObterTodos();
             var classificacoes = await _classificacaoRepository.GetClassificacoes();
             var segmentos = await _segmentoRepository.ObterTodos();
@@ -133,6 +145,12 @@ namespace Web.Controllers
             };
 
             return View(analiseHistoricoViewModel);
+        }
+
+        public async Task<IActionResult> ExportarExcel(string tipoPessoaFiltro, double? numeroDocumento, Guid classificacao, DateTime? dataInicio, DateTime? dataFim, Guid segmento, Guid motivo)
+        {
+            var analises = await _analiseRepository.GetTodasAnalises(tipoPessoaFiltro, numeroDocumento, classificacao, dataInicio, dataFim, segmento, motivo);
+            return View();
         }
     }
 }
