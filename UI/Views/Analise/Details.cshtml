@@ -1,0 +1,101 @@
+﻿@model UI.ViewModels.AnaliseDetailsViewModel
+@{
+    ViewData["Title"] = "Detalhe";
+}
+
+<div class="row abas aba-info active">
+
+    <div class="col-md-9">
+
+        <h4>Informações da Análise de Crédito</h4>
+        <div class="table-responsive">       
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>@(Model.Analise.Pessoa.TipoPessoa.Chave=="F"?"CPF":"CNPJ")</th>
+                <th>Segmento</th>
+            </tr>
+            <tr>
+                <td>@Model.Analise.Pessoa.NumeroDocumento</td>
+                <td>@Model.Analise.Pessoa.Segmento.Descricao</td>
+            </tr>
+            <tr>
+                <th>Recebido em:</th>
+                <th>Atualizado em:</th>
+            </tr>
+            <tr>
+                <td>@Model.Analise.Pessoa.DataCadastro</td>
+                <td>
+                    @if (@Model.Analise!=null)
+                    {
+                        @Model.Analise.DataCadastro    
+                    }else{
+                        <span>-</span>
+                    }
+                        
+                </td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h4 class="text-center">Classificação</h4>
+        <div class="card">
+            <div class="card-body">
+                @if (@Model.Analise!=null)
+                    {
+                        <h1 class="classificacaoTxt">@Model.Analise.Classificacao.Descricao</h1>
+
+                        @if(Model.Analise.DataExpiracao!=null){
+                            <small class="text-center d-block">Expira em: @Model.Analise.DataExpiracao</small>
+                        }else{
+                            <small class="text-center d-block">Sem data de expiração</small>
+                        }
+
+                    }else{
+                        <h1 class="classificacaoTxt"><span class="semClassificacao">Sem Classificação</span></h1>
+                        <small class="text-center d-block">&nbsp;</small>
+                    }
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col-md-12">
+        <div class="table-responsive">        
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Motivo</th>  
+            </tr>
+            <tr>
+                <td>
+                    @if(Model.Analise!=null){
+                        @Model.Analise.Motivo.Descricao
+                    }else{
+                        <i>-</i>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th>Parecer</th>
+            </tr>
+            <tr>
+                <td>
+                    @if(Model.Analise!=null){
+                        @Html.Raw(Model.Analise.Parecer)
+                    }else{
+                        <i>-</i>
+                    } 
+                </td>
+            </tr>
+        </table>
+        <div class="float-right">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-sm btn-info">
+                <i class="fa fa-home"></i> Ir para home
+            </a>
+            <a asp-controller="Analise" asp-action="Historico" class="btn btn-sm btn-info">
+                <i class="fa fa-newspaper"></i> Ir para Históricos
+            </a>
+        </div>
+        </div>
+    </div>
+</div>
