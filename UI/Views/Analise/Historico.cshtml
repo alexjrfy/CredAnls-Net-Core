@@ -137,7 +137,16 @@
                     asp-route-dataFim="@dataFim"
 
                     class="btn btn-sm btn-success"><i class="fa fa-file-excel-o"></i> Exportar como Excel</a>
-                <button class="btn btn-sm btn-danger"><i class="fa fa-file-pdf-o"></i> Exportar como PDF</button>
+                <a 
+                    asp-action="ExportarPDF" 
+                    asp-route-tipoPessoaFiltro="@tipoPessoaFiltro"
+                    asp-route-numeroDocumento="@numeroDocumento"
+                    asp-route-classificacao="@classificacao"
+                    asp-route-segmento="@segmento"
+                    asp-route-motivo="@motivo"
+                    asp-route-dataInicio="@dataInicio"
+                    asp-route-dataFim="@dataFim"
+                    class="btn btn-sm btn-danger"><i class="fa fa-file-pdf-o"></i> Exportar como PDF</a>
             </div>
         
             <div class="table-responsive">
