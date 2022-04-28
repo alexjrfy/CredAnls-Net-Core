@@ -19,12 +19,11 @@ namespace Data.Repository
         }
         public async Task<List<Analise>> GetHistricoAnaliseLimite(int limite)
         {
-            return await Db.Analise.Take(limite).AsNoTracking()
+            return await Db.Analise.OrderByDescending(c => c.DataCadastro).Take(limite).AsNoTracking()
                 .Include(c => c.Classificacao)
                 .Include(c => c.Pessoa).ThenInclude(c => c.TipoPessoa)
                 .Include(c => c.Pessoa).ThenInclude(c => c.Segmento)
                 .Include(c => c.Motivo)
-                .OrderByDescending(c => c.DataCadastro)
                 .ToListAsync();
         }
 
